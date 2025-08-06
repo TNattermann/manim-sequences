@@ -2,28 +2,47 @@
 
 
 
-## Getting started
+## Setup
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
-
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
-
+### Install manim python package
 ```
-cd existing_repo
-git remote add origin https://sci-git.cs.rptu.de/master-projekt-ss2025/manim.git
-git branch -M main
-git push -uf origin main
+pip install -r requirements.txt
 ```
 
-## Integrate with your tools
+### Install local LaTeX interpreter
 
-- [ ] [Set up project integrations](https://sci-git.cs.rptu.de/master-projekt-ss2025/manim/-/settings/integrations)
+For Ubuntu/Debian:
+```
+sudo apt update
+sudo apt install texlive
+pdflatex --version
+```
 
+For MacOS:
+```
+brew install --cask mactex
+pdflatex --version
+```
+
+For Windows:
+
+Follow instructions on https://miktex.org/download
+
+## Run Simulation
+Execute from repo root: 
+```
+manim src/manim.py ClassName
+```
+- where **manim.py** should be the Python file that stores your Manim Python Class
+- and **ClassName** should be the name of that Python Class
+
+
+## Repo Structure
+
+- **manin.cfg** can be used to configure CLI commands (e.g. change FPS, video quality, media directory)
+    - for development set quality to low (480p) to reduce computation requirements
+- **media_input** folder stores media that can be used within the Sequences
+- **media_output** folder stores the created sequences (videos/run_id/resolution/ClassName.mp4)
 ## Collaborate with your team
 
 - [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
