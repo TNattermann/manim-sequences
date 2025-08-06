@@ -7,6 +7,7 @@
 ### Install manim python package
 ```
 pip install -r requirements.txt
+conda install -c conda-forge manim # for conda env
 ```
 
 ### Install local LaTeX interpreter
