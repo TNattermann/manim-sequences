@@ -34,11 +34,21 @@ class BackpropagationScene(Scene):
         all_edges = VGroup(*edges1, *edges2, *edges3)
 
         # --- Title
-        title = Text("Backpropagation", font_size=36)
+        title = Text("Backpropagation", font_size=36, font="DejaVu Sans")
         title.to_edge(UP)
 
+        # --- Braces for input/output layers
+        input_brace = Brace(input_layer, LEFT, buff=0.2)
+        input_label = Text("Input Layer", font_size=24, font="DejaVu Sans").next_to(
+            input_brace, LEFT).rotate(PI/2)
+
+        output_brace = Brace(output_layer, RIGHT, buff=0.2)
+        output_label = Text("Output Layer", font_size=24, font="DejaVu Sans").next_to(
+            output_brace, RIGHT).rotate(-PI/2)
+
         # --- Add all content
-        self.add(title, input_layer, hidden1, hidden2, output_layer, all_edges)
+        self.add(title, input_layer, hidden1, hidden2, output_layer, all_edges,
+                 input_brace, input_label, output_brace, output_label)
 
         # --- Animate backprop: highlight edges backwards
         self.backprop_step(output_layer, hidden2, edges3)

@@ -36,12 +36,22 @@ class GradientDescentEdgesScene(Scene):
         all_edges = VGroup(*edges1, *edges2, *edges3)
 
         # --- Title / step label
-        title = Text("Gradientenabstieg eines Neuronalen Netzes", font_size=36)
+        title = Text("Gradientenabstieg eines Neuronalen Netzes", font_size=36, font="DejaVu Sans")
         title.to_edge(UP)
-        step_label = Text("1. Durchlauf", font_size=28).next_to(title, DOWN, buff=0.25)
+        step_label = Text("1. Durchlauf", font_size=28, font="DejaVu Sans").next_to(title, DOWN, buff=0.25)
+
+        # --- Braces for input/output layers
+        input_brace = Brace(input_layer, LEFT, buff=0.2)
+        input_label = Text("Input Layer", font_size=24, font="DejaVu Sans").next_to(
+            input_brace, LEFT).rotate(PI/2)
+
+        output_brace = Brace(output_layer, RIGHT, buff=0.2)
+        output_label = Text("Output Layer", font_size=24, font="DejaVu Sans").next_to(
+            output_brace, RIGHT).rotate(-PI/2)
 
         # --- Show setup
-        self.add(title, step_label, input_layer, hidden1, hidden2, output_layer, all_edges)
+        self.add(title, step_label, input_layer, hidden1, hidden2, output_layer, all_edges,
+                 input_brace, input_label, output_brace, output_label)
 
         # --- Initialize pseudo-weights mapped to stroke widths
         rng = np.random.default_rng(42)
@@ -69,7 +79,8 @@ class GradientDescentEdgesScene(Scene):
 
                 anims.append(e.animate.set_stroke(width=target))
 
-            new_label = Text(f"{step_idx}. Durchlauf", font_size=28).next_to(title, DOWN, buff=0.25)
+            new_label = Text(f"{step_idx}. Durchlauf", font_size=28, font="DejaVu Sans").next_to(
+                title, DOWN, buff=0.25)
             self.play(Transform(step_label, new_label), run_time=0.6)
 
             self.play(LaggedStart(*anims, lag_ratio=0.0015, run_time=1.5, rate_func=smooth))

@@ -55,7 +55,16 @@ class FullTrainingCycleScene(Scene):
         full_net.scale(scale)
         full_net.to_edge(UP, buff=0.6)
 
-        self.add(full_net)
+        # --- Braces for input/output layers
+        input_brace = Brace(input_layer, LEFT, buff=0.2)
+        input_label = Text("Input Layer", font_size=24, font="DejaVu Sans").next_to(
+            input_brace, LEFT).rotate(PI/2)
+
+        output_brace = Brace(output_layer, RIGHT, buff=0.2)
+        output_label = Text("Output Layer", font_size=24, font="DejaVu Sans").next_to(
+            output_brace, RIGHT).rotate(-PI/2)
+
+        self.add(full_net, input_brace, input_label, output_brace, output_label)
 
         # Baseline below the network for arrows and the description strip
         baseline_y = full_net.get_bottom()[1] - 1.2
@@ -65,10 +74,10 @@ class FullTrainingCycleScene(Scene):
         self.add(self.desc_group)
 
         # --------------- Stage 1: Forward pass ---------------
-        forward_text = MarkupText("Vorhersage der KI\n"
-                            "          =\n"
+        forward_text = Paragraph("Vorhersage der KI\n"
+                            "=\n"
                             "Bogenschuss",
-                            font_size=28)
+                            font_size=28, font="DejaVu Sans", alignment="center", line_spacing=0.4)
         forward_text.align_on_border(UP)
         forward_media = ImageMobject("media_input/FP_transparent.png").scale(0.4)
         self.show_desc(forward_text, forward_media, baseline_y)
@@ -82,20 +91,20 @@ class FullTrainingCycleScene(Scene):
 
         # --------------- Stage 2: Loss ---------------
         # (Replace Text with ImageMobject("path.png") or VideoMobject("clip.mp4") if desired)
-        loss_text = MarkupText("Abgleich Vorhersage - Label\n"
-                               "          =\n"
+        loss_text = Paragraph("Abgleich Vorhersage - Label\n"
+                               "=\n"
                                "Distanz zur Zielscheibe",
-                               font_size=28)
+                               font_size=28, font="DejaVu Sans", alignment="center", line_spacing=0.4)
         loss_text.align_on_border(UP)
         loss_media = ImageMobject("media_input/Loss_transparent.png").scale(0.35)
         self.show_desc(loss_text, loss_media, baseline_y)
         self.wait(4)
 
         # --------------- Stage 3: Backpropagation ---------------
-        backprop_text = MarkupText("Ermittlung der Gewichtsanpassungen\n"
-                             "          =\n"
+        backprop_text = Paragraph("Ermittlung der Gewichtsanpassungen\n"
+                             "=\n"
                              "Trainerfeedback",
-                             font_size=28)
+                             font_size=28, font="DejaVu Sans", alignment="center", line_spacing=0.4)
         backprop_text.align_on_border(UP)
         backprop_media = ImageMobject("media_input/Backprop_transparent.png").scale(0.4)
         self.show_desc(backprop_text, backprop_media, baseline_y)
@@ -106,10 +115,10 @@ class FullTrainingCycleScene(Scene):
         self.reset_net_styles([input_layer, hidden1, hidden2, output_layer], edges1 + edges2 + edges3)
 
         # --------------- Stage 4: Gradient descent update ---------------
-        graddesc_text = MarkupText("Durchführung der Gewichtsanpassungen\n"
-                                   "          =\n"
+        graddesc_text = Paragraph("Durchführung der Gewichtsanpassungen\n"
+                                   "=\n"
                                    "Technik korrigieren",
-                                   font_size=28)
+                                   font_size=28, font="DejaVu Sans", alignment="center", line_spacing=0.4)
         graddesc_text.align_on_border(UP)
         graddesc_media = ImageMobject("media_input/GradDesc_transparent.png").scale(1.0)
         self.show_desc(graddesc_text, graddesc_media, baseline_y)
