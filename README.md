@@ -1,6 +1,7 @@
 # manim
-
-
+Repo stores code for mathematical simulations / visualizations used on the 
+Homepage for the book "Weiß die KI, dass sie nichts weiß" in the section "Wie lernt ChatGPT?". 
+The repo can be used to replicate / adapt the used animations.
 
 ## Setup
 
