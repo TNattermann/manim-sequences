@@ -7,7 +7,7 @@ This is the mirrored version of the AALAB research group repo at RPTU Kaiserslau
 The resulting homepage serves as supporting, interactive material for the book ["Weiss die KI, dass sie nichts weiß?"](https://www.penguin.de/buecher/katharina-zweig-weiss-die-ki-dass-sie-nichts-weiss-/paperback/9783453219076) by Katharina Zweig. The resulting homepage can be found [here](https://aalab-weiss-die-ki-dass-sie-nichts-weiss.cs.rptu.de/).
 
 Repo stores code for mathematical simulations / visualizations used on the 
-Homepage for the book "Weiß die KI, dass sie nichts weiß" in the section "Wie lernt ChatGPT?". 
+Homepage for the book "Weiß die KI, dass sie nichts weiß" in the section ["Wie lernt ChatGPT?"](https://aalab-weiss-die-ki-dass-sie-nichts-weiss.cs.rptu.de/networkLearning). 
 The repo can be used to replicate / adapt the used animations.
 
 ## Setup
